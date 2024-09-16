@@ -46,7 +46,7 @@ export const PasswordResetEmail = ({ url }: { url: string }) => {
         >
           <Text className="my-2 text-2xl font-bold">Password Reset</Text>
           <Img
-            src="https://Mak Guilds.vercel.app/logo.png"
+            src="https://wabtech-admin.vercel.app/logo.png"
             alt="Test"
             height="80"
             width="80"
