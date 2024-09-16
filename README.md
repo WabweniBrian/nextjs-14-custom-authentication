@@ -21,6 +21,7 @@ This is a simple authentication project built with Next.js 14 and Prisma. It inc
 - **Prisma ORM**
 - **Postgresql**
 - **Tailwind CSS**
+- **Shadcn UI**
 
 ## Getting Started
 
