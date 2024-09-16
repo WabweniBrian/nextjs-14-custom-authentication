@@ -11,7 +11,7 @@ This is a simple authentication project built with Next.js 14 and Prisma. It inc
 - **Email verification**
 - **Google authentication with react-google auth**
 - **Dashboard with basic user information**
-- **Session Cookies**
+- **Session & Cookies with jose**
 
 ## Built With
 

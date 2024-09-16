@@ -51,7 +51,6 @@ export async function verifyToken(token: string) {
 export async function getServerSession() {
   const token = cookies().get("auth_token")?.value;
   if (!token) return null;
-
   return verifyToken(token);
 }
 

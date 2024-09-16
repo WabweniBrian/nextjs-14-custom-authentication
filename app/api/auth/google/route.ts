@@ -17,10 +17,9 @@ export async function POST(request: Request) {
   const userData = await response.json();
 
   if (!userData.email) {
-    return NextResponse.json(
-      { error: "Unable to retrieve user information" },
-      { status: 400 },
-    );
+    return new NextResponse("Unable to retrieve user information", {
+      status: 400,
+    });
   }
 
   let user = await prisma.user.findUnique({ where: { email: userData.email } });
