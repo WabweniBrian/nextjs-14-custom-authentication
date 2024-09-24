@@ -1,19 +1,18 @@
 "use client";
 
 import { useGoogleLogin } from "@react-oauth/google";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { ImSpinner2 } from "react-icons/im";
 
-interface GoogleButtonProps {
-  callbackUrl: string;
-}
-
-const GoogleButton = ({ callbackUrl }: GoogleButtonProps) => {
+const GoogleButton = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams?.get("callbackUrl") || "/dashboard";
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {

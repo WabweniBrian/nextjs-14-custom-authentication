@@ -2,16 +2,12 @@
 
 import GoogleButton from "@/components/auth/google-button";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { Suspense } from "react";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const showGoogleSignIn = pathname === "/sign-in" || pathname === "/sign-up";
-
-  const searchParams = useSearchParams();
-
-  const callbackUrl = searchParams?.get("callbackUrl") || "/dashboard";
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
@@ -23,7 +19,9 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
                 {pathname === "/sign-in" ? "Login to Auth" : "Register to Auth"}
               </h2>
               <div className="mt-4">
-                <GoogleButton callbackUrl={callbackUrl} />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <GoogleButton />
+                </Suspense>
               </div>
               <div className="mb-4 mt-6 flex-center-center">
                 <hr className="h-[1px] w-full border-gray-300 dark:border-gray-700" />
