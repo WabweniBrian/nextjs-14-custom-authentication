@@ -7,6 +7,7 @@ const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 interface JWTPayload {
   id: string;
+  role: string;
   [key: string]: string | number | boolean;
 }
 
@@ -21,7 +22,11 @@ export async function verifyPassword(
   return compare(password, hashedPassword);
 }
 
-export async function createToken(payload: JWTPayload): Promise<string> {
+export async function createToken(user: {
+  id: string;
+  role: string;
+}): Promise<string> {
+  const payload: JWTPayload = { id: user.id, role: user.role };
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -60,7 +65,7 @@ export async function getCurrentUser() {
 
   const user = await prisma.user.findUnique({
     where: { id: session.id },
-    select: { id: true, name: true, email: true, image: true },
+    select: { id: true, name: true, email: true, image: true, role: true },
   });
 
   return user;

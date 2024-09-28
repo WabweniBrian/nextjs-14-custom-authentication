@@ -1,4 +1,4 @@
-# Custom Next.js 14 Authentication - No Third-Party Libraries - With Google Login
+# Custom Next.js 14 Role Based Authentication - No Third-Party Libraries - With Google Login
 
 ![Screenshot](screenshot.png)
 
@@ -9,8 +9,14 @@ This is a simple authentication project built with Next.js 14 and Prisma. It inc
 - **Forgot password**
 - **Reset password**
 - **Email verification**
+- **Comprehensive middleware to handle roles, redirect, etc**
 - **Google authentication with react-google auth**
-- **Dashboard with basic user information**
+- **Profile Update**
+- **Acccount Deletion**
+- **Changing Password**
+- **Callback redirects**
+- **Custom useAuth hook for client components and getCurrentUser for server components**
+- **General Dashboard & Admin Dashboard and restrict access i.e general user can't access admin dashboard likewise admin user can't have access to user dashboard**
 - **Session & Cookies with jose**
 - **Form Validation with zod and React Hook Form**
 
@@ -28,8 +34,9 @@ This is a simple authentication project built with Next.js 14 and Prisma. It inc
 1. Clone the repository.
 2. Install dependencies with `npm install`.
 3. Create a `.env` file by copying the contents of `.env.example`.
-4. Start the development server with `npm run dev`.
-5. Access the application at [http://localhost:3000](http://localhost:3000).
+4. Run Prisma with `npx prisma generate` and `npx prisma db push`.
+5. Start the development server with `npm run dev`.
+6. Access the application at [http://localhost:3000](http://localhost:3000).
 
 ## Development
 
